@@ -1,5 +1,6 @@
 package com.workmate.attendace.utilities.android
 
+import com.workmate.attendace.ui.screens.ScreenModule
 import com.workmate.attendace.utilities.UtilitiesModule
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -11,6 +12,7 @@ import javax.inject.Singleton
     AndroidInjectionModule::class,
     AndroidSupportInjectionModule::class,
     AndroidModule::class,
+    ScreenModule::class,
     UtilitiesModule::class
 ])
 @Singleton
