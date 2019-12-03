@@ -1,10 +1,10 @@
 package com.workmate.attendace.utilities.retrofit
 
 import com.workmate.attendace.model.ApiKey
+import com.workmate.attendace.model.JobInformation
 import com.workmate.attendace.model.User
 import io.reactivex.Single
-import retrofit2.http.Body
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface HelpsterTechRestApi {
 
@@ -12,4 +12,8 @@ interface HelpsterTechRestApi {
     fun login(
         @Body user: User
     ): Single<ApiKey>
+
+    @GET("staff-requests/26074/")
+    fun loadJobInformation(
+        @Header("token") apiKey: String): Single<JobInformation>
 }
