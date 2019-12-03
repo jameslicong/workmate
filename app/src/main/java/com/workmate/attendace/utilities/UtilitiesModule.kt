@@ -1,6 +1,7 @@
 package com.workmate.attendace.utilities
 
 import com.workmate.attendace.utilities.framework.FrameworkModule
+import com.workmate.attendace.utilities.preference.SharedPrefUtilsModule
 import com.workmate.attendace.utilities.retrofit.RetrofitModule
 import com.workmate.attendace.utilities.rx.RxModule
 import dagger.Module
@@ -9,7 +10,8 @@ import dagger.Module
     includes = [
         FrameworkModule::class,
         RetrofitModule::class,
-        RxModule::class
+        RxModule::class,
+        SharedPrefUtilsModule::class
     ]
 )
 class UtilitiesModule
