@@ -1,6 +1,7 @@
 package com.workmate.attendace.ui.screens
 
 import com.workmate.attendace.utilities.dagger.ActivityScope
+import com.workmate.attendace.utilities.dagger.FragmentScope
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -12,7 +13,7 @@ abstract class ScreenModule {
     abstract fun mainActivity(): MainActivity
 
 
-    @ActivityScope
+    @FragmentScope
     @ContributesAndroidInjector
     abstract fun mainFragment(): MainFragment
 
