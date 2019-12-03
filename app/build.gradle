@@ -17,6 +17,10 @@ android {
         versionCode versions.code
         versionName versions.name
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "SERVER_URL", "\"https://api.helpster.tech/v1/\""
+        buildConfigField "String", "DEFAULT_USERNAME", "\"+6281313272005\""
+        buildConfigField "String", "DEFAULT_PASSWORD", "\"alexander\""
     }
 
     buildTypes {
