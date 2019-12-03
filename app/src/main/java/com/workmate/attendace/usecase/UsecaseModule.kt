@@ -2,6 +2,7 @@ package com.workmate.attendace.usecase
 
 import com.workmate.attendace.usecase.local.LocalUsecaseModule
 import com.workmate.attendace.usecase.remote.RemoteUsecaseModule
+import dagger.Binds
 import dagger.Module
 
 
@@ -9,4 +10,10 @@ import dagger.Module
     LocalUsecaseModule::class,
     RemoteUsecaseModule::class
 ])
-class UsecaseModule
+abstract class UsecaseModule {
+
+    @Binds
+    abstract fun bindLoginAuthenticator(
+        loginAuthenticator: DefaultLoginAuthenticator
+    ): LoginAuthenticator
+}
