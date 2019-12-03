@@ -1,8 +1,8 @@
-package com.workmate.attendace
+package com.workmate.attendace.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.workmate.attendace.ui.main.MainFragment
+import com.workmate.attendace.R
 
 class MainActivity : AppCompatActivity() {
 
