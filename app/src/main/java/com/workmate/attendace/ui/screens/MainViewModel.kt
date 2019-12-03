@@ -1,4 +1,4 @@
-package com.workmate.attendace.ui.main
+package com.workmate.attendace.ui.screens
 
 import androidx.lifecycle.ViewModel
 

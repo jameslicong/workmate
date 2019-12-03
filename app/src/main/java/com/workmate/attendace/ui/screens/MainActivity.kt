@@ -1,10 +1,10 @@
-package com.workmate.attendace.ui.main
+package com.workmate.attendace.ui.screens
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.workmate.attendace.R
+import dagger.android.support.DaggerAppCompatActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

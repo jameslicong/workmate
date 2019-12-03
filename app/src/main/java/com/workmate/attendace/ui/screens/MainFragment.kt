@@ -1,14 +1,14 @@
-package com.workmate.attendace.ui.main
+package com.workmate.attendace.ui.screens
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.workmate.attendace.R
+import dagger.android.support.DaggerFragment
 
-class MainFragment : Fragment() {
+class MainFragment : DaggerFragment() {
 
     companion object {
         fun newInstance() = MainFragment()
