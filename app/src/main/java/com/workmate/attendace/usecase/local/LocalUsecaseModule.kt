@@ -10,4 +10,14 @@ abstract class LocalUsecaseModule {
     internal abstract fun bindUserLocalLoader(
         userLocalLoader: DefaultUserLocalLoader
     ): UserLocalLoader
+
+    @Binds
+    internal abstract fun bindApiKeyLocalLoader(
+        apiKeyLocalLoader: DefaultApiKeyLocalLoader
+    ): ApiKeyLocalLoader
+
+    @Binds
+    internal abstract fun bindApiKeyLocalSaver(
+        apiKeyLocalSaver: DefaultApiKeyLocalSaver
+    ): ApiKeyLocalSaver
 }
