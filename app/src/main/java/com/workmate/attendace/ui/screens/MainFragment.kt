@@ -27,6 +27,8 @@ class MainFragment : DaggerFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 //        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+
+        viewModel.autoLogin()
     }
 
 }
