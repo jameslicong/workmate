@@ -1,12 +1,12 @@
 package com.workmate.attendace.ui.screens
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.workmate.attendace.R
 import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
 class MainFragment : DaggerFragment() {
 
@@ -14,7 +14,8 @@ class MainFragment : DaggerFragment() {
         fun newInstance() = MainFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    @Inject
+    lateinit var viewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,8 +26,7 @@ class MainFragment : DaggerFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
+//        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
     }
 
 }
