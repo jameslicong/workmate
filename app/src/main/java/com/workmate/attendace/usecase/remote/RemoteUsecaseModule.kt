@@ -7,6 +7,11 @@ import dagger.Module
 abstract class RemoteUsecaseModule {
 
     @Binds
+    internal abstract fun bindJobInfoRemoteLoader(
+        jobInfoRemoteLoader: DefaultJobInfoRemoteLoader
+    ): JobInfoRemoteLoader
+
+    @Binds
     internal abstract fun bindUserLogin(
         userLogin: DefaultUserLogin
     ): UserLogin
