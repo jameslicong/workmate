@@ -12,8 +12,4 @@ interface HelpsterTechRestApi {
     fun login(
         @Body user: User
     ): Single<ApiKey>
-
-    @GET("staff-requests/26074/")
-    fun loadJobInformation(
-        @Header("token") apiKey: String): Single<JobInformation>
 }
