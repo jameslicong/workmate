@@ -3,7 +3,6 @@ package com.workmate.attendace.usecase.remote
 import com.workmate.attendace.model.ApiKey
 import com.workmate.attendace.model.JobInformation
 import com.workmate.attendace.utilities.retrofit.ApiFactory
-import com.workmate.attendace.utilities.retrofit.HelpsterTechRestApi
 import com.workmate.attendace.utilities.retrofit.JobInfoRestApi
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
