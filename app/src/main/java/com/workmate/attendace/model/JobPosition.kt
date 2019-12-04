@@ -1,7 +1,7 @@
 package com.workmate.attendace.model
 
 data class JobPosition(
-    private val id: String,
-    private val name: String,
-    private val status: Boolean
+    val id: String,
+    val name: String,
+    val status: Boolean
 )
