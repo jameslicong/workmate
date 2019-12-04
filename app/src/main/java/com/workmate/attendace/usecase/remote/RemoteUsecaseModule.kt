@@ -7,6 +7,11 @@ import dagger.Module
 abstract class RemoteUsecaseModule {
 
     @Binds
+    internal abstract fun bindAttendanceRemoteSaver(
+        attendanceRemoteSaver: DefaultAttendanceRemoteSaver
+    ): AttendanceRemoteSaver
+
+    @Binds
     internal abstract fun bindJobInfoRemoteLoader(
         jobInfoRemoteLoader: DefaultJobInfoRemoteLoader
     ): JobInfoRemoteLoader
