@@ -1,9 +1,12 @@
 <resources>
-    <string name="app_name">Workmate Attendace</string>
+    <string name="app_name">Workmate Attendance</string>
 
     <string name="clock_in">Clock In</string>
     <string name="clock_out">Clock Out</string>
     <string name="time_empty">--</string>
     <string name="manager">Manager</string>
     <string name="contact_number">Contact Number</string>
+    <string name="clocking_in">Clocking In&#8230;</string>
+    <string name="clocking_out">Clocking Out&#8230;</string>
+    <string name="cancel"><u>Cancel</u></string>
 </resources>
