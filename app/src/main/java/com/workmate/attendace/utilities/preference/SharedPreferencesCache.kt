@@ -16,7 +16,7 @@ class SharedPreferencesCache
         sharedPreferences = context.getSharedPreferences(sharedPreferencesName, MODE_PRIVATE)
     }
 
-    override fun getLong(key: String): Long? {
+    override fun getLong(key: String): Long {
         return sharedPreferences.getLong(key, 0)
     }
 
