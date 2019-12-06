@@ -7,4 +7,9 @@ class Constants {
         val CLOCK_IN = "clock_in"
         val CLOCK_OUT = "clock_out"
     }
+
+    enum class AttendanceState {
+        CLOCK_IN,
+        CLOCK_OUT
+    }
 }
