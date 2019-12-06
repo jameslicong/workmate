@@ -131,7 +131,7 @@ class MainFragment : DaggerFragment() {
 
         val underlinedPhoneNumber = SpannableString(jobInfo.manager.phone)
         underlinedPhoneNumber.setSpan(UnderlineSpan(), 0, underlinedPhoneNumber.length, 0)
-        managerContactNumberValue.text = jobInfo.manager.phone
+        managerContactNumberValue.text = underlinedPhoneNumber
 
     }
 
