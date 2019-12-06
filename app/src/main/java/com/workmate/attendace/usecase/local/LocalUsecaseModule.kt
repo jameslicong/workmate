@@ -7,6 +7,11 @@ import dagger.Module
 abstract class LocalUsecaseModule {
 
     @Binds
+    internal abstract fun bindAttendanceStateLocalDeleter(
+        attendanceStateLocalDeleter: DefaultAttendanceStateLocalDeleter
+    ): AttendanceStateLocalDeleter
+
+    @Binds
     internal abstract fun bindAttendanceStateLocalLoader(
         attendanceStateLocalLoader: DefaultAttendanceStateLocalLoader
     ): AttendanceStateLocalLoader
