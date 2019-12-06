@@ -10,4 +10,6 @@ interface Cache {
 
     fun setString(key: String, value: String)
 
+    fun remove(key: String)
+
 }

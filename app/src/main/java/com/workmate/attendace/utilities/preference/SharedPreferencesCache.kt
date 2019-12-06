@@ -31,4 +31,8 @@ class SharedPreferencesCache
     override fun setString(key: String, value: String) {
         sharedPreferences.edit().putString(key, value).apply()
     }
+
+    override fun remove(key: String) {
+        sharedPreferences.edit().remove(key).apply()
+    }
 }
