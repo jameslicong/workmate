@@ -147,6 +147,7 @@
                     style="@style/Text.Title"
                     android:layout_width="0dp"
                     android:text="@string/time_empty"
+                    android:textAllCaps="false"
                     android:textSize="@dimen/text_time_size"
                     android:layout_weight="1"/>
 
@@ -155,6 +156,7 @@
                     style="@style/Text.Title"
                     android:layout_width="0dp"
                     android:text="@string/time_empty"
+                    android:textAllCaps="false"
                     android:textSize="@dimen/text_time_size"
                     android:layout_weight="1"/>
             </LinearLayout>

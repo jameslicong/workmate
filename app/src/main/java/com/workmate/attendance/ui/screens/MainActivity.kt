@@ -16,4 +16,8 @@ class MainActivity : DaggerAppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        // Do nothing
+    }
+
 }

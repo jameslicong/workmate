@@ -19,6 +19,7 @@ import android.text.style.UnderlineSpan
 import android.text.SpannableString
 import com.workmate.attendance.R
 import com.workmate.attendance.model.JobInformation
+import com.workmate.attendance.utilities.Constants.AttendanceState
 
 
 class MainFragment : DaggerFragment() {
@@ -78,9 +79,12 @@ class MainFragment : DaggerFragment() {
     @BindString(R.string.time_empty)
     lateinit var timeEmptyText: String
 
+    private lateinit var timeEntryFragment: TimeEntryFragment
+
     @OnClick(R.id.attendance_button)
     internal fun onClickClockInOrOut() {
-        viewModel.clockInOrOut()
+        fragmentManager?.beginTransaction()?.replace(
+            R.id.container, timeEntryFragment)?.addToBackStack(null)?.commit()
     }
 
     override fun onCreateView(
@@ -101,20 +105,14 @@ class MainFragment : DaggerFragment() {
 
 
         viewModel.autoLogin()
+        viewModel.loadAttendanceTimeInDetails()
+
         viewModel.onLoadJobInfo()
-            .observe(this, Observer {
-
-                onLoadJobInfo(it)
+            .observe(this, Observer { jobInfo ->
+                onLoadJobInfo(jobInfo)
+                startListeningToAttendanceState(jobInfo)
             })
 
-        viewModel.onLoadAttendanceState()
-            .observe(this, Observer {
-
-                attendanceButton.text = clockInText
-                clockInValue.text = timeEmptyText
-                clockOutValue.text = timeEmptyText
-
-            })
     }
 
     private fun onLoadJobInfo(jobInfo: JobInformation) {
@@ -133,6 +131,38 @@ class MainFragment : DaggerFragment() {
         underlinedPhoneNumber.setSpan(UnderlineSpan(), 0, underlinedPhoneNumber.length, 0)
         managerContactNumberValue.text = underlinedPhoneNumber
 
+        startListeningToTimeEntries()
+
     }
 
+    private fun startListeningToAttendanceState(jobInfo: JobInformation) {
+        viewModel.onLoadAttendanceState()
+            .observe(this, Observer { attendanceState ->
+
+                timeEntryFragment =
+                    TimeEntryFragment
+                        .createWithJobInfoAndAttendanceState(jobInfo, attendanceState)
+
+                when (attendanceState) {
+                    AttendanceState.TO_CLOCK_IN -> attendanceButton.text = clockInText
+                    AttendanceState.TO_CLOCK_OUT -> attendanceButton.text = clockOutText
+                }
+            })
+    }
+
+    private fun startListeningToTimeEntries() {
+
+        viewModel.onLoadTimeInValue()
+            .observe(this, Observer {
+                clockInValue.text = it.toLowerCase()
+            })
+
+        viewModel.onLoadTimeOutValue()
+            .observe(this, Observer {
+                clockOutValue.text = it.toLowerCase()
+
+                viewModel.deleteAttendanceState()
+                attendanceButton.visibility = View.GONE
+            })
+    }
 }
