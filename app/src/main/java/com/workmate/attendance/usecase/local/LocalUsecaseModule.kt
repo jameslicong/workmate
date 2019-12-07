@@ -22,6 +22,11 @@ abstract class LocalUsecaseModule {
     ): AttendanceStateLocalLoader
 
     @Binds
+    internal abstract fun bindAttendanceStateLocalSaver(
+        attendanceStateLocalSaver: DefaultAttendanceStateLocalSaver
+    ): AttendanceStateLocalSaver
+
+    @Binds
     internal abstract fun bindUserLocalLoader(
         userLocalLoader: DefaultUserLocalLoader
     ): UserLocalLoader
