@@ -17,4 +17,8 @@ abstract class ScreenModule {
     @ContributesAndroidInjector
     abstract fun mainFragment(): MainFragment
 
+    @FragmentScope
+    @ContributesAndroidInjector
+    abstract fun timeEntryFragment(): TimeEntryFragment
+
 }
