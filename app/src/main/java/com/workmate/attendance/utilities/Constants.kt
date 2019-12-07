@@ -8,8 +8,8 @@ class Constants {
         val CLOCK_OUT = "clock_out"
     }
 
-    enum class AttendanceState {
-        TO_CLOCK_IN,
-        TO_CLOCK_OUT
+    enum class AttendanceState(val value: Int) {
+        TO_CLOCK_IN(0),
+        TO_CLOCK_OUT(1)
     }
 }
