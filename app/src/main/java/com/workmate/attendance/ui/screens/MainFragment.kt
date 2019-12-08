@@ -17,6 +17,7 @@ import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 import android.text.style.UnderlineSpan
 import android.text.SpannableString
+import com.google.android.material.snackbar.Snackbar
 import com.workmate.attendance.R
 import com.workmate.attendance.model.JobInformation
 import com.workmate.attendance.utilities.Constants.AttendanceState
@@ -79,12 +80,27 @@ class MainFragment : DaggerFragment() {
     @BindString(R.string.time_empty)
     lateinit var timeEmptyText: String
 
+    @BindView(R.id.no_network_text)
+    lateinit var noNetworkText: TextView
+
+    @BindView(R.id.retry)
+    lateinit var retryButton: Button
+
     private lateinit var timeEntryFragment: TimeEntryFragment
 
     @OnClick(R.id.attendance_button)
     internal fun onClickClockInOrOut() {
         fragmentManager?.beginTransaction()?.replace(
             R.id.container, timeEntryFragment)?.addToBackStack(null)?.commit()
+    }
+
+    @OnClick(R.id.retry)
+    internal fun onClickRetry() {
+        retryButton.visibility = View.GONE
+        noNetworkText.visibility = View.GONE
+
+        viewModel.autoLogin()
+        viewModel.loadAttendanceTimeInDetails()
     }
 
     override fun onCreateView(
@@ -111,6 +127,14 @@ class MainFragment : DaggerFragment() {
             .observe(this, Observer { jobInfo ->
                 onLoadJobInfo(jobInfo)
                 startListeningToAttendanceState(jobInfo)
+            })
+
+        viewModel.onThrowableExceptionHappen()
+            .observe(this, Observer {
+                
+                noNetworkText.text = it.message
+                noNetworkText.visibility = View.VISIBLE
+                retryButton.visibility = View.VISIBLE
             })
 
     }

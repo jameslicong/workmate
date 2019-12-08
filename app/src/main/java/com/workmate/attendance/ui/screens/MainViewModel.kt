@@ -3,6 +3,7 @@ package com.workmate.attendance.ui.screens
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.workmate.attendance.model.JobInformation
+import com.workmate.attendance.usecase.Internet
 import com.workmate.attendance.usecase.LoginAuthenticator
 import com.workmate.attendance.usecase.local.AttendanceStateLocalDeleter
 import com.workmate.attendance.usecase.local.AttendanceStateLocalLoader
@@ -21,6 +22,7 @@ class MainViewModel
     internal constructor(
         private val attendanceStateLocalDeleter: AttendanceStateLocalDeleter,
         private val attendanceStateLocalLoader: AttendanceStateLocalLoader,
+        private val internet: Internet,
         private val loginAuthenticator: LoginAuthenticator,
         private val jobInfoRemoteLoader: JobInfoRemoteLoader,
         private val scheduler: RxSchedulerUtils
@@ -33,6 +35,8 @@ class MainViewModel
     private val timeInValue: MutableLiveData<String> = MutableLiveData()
 
     private val timeOutValue: MutableLiveData<String> = MutableLiveData()
+
+    private val throwableExceptionLiveData: MutableLiveData<Throwable> = MutableLiveData()
 
     fun onLoadJobInfo(): LiveData<JobInformation> {
         return jobInfoLiveData
@@ -50,9 +54,14 @@ class MainViewModel
         return timeOutValue
     }
 
+    fun onThrowableExceptionHappen(): LiveData<Throwable> {
+        return throwableExceptionLiveData
+    }
+
     fun autoLogin() {
         addDisposable(
-            loginAuthenticator.login()
+            internet.isConnected()
+                .andThen(loginAuthenticator.login())
                 .compose(scheduler.forCompletable())
                 .subscribe(
                     {
@@ -63,6 +72,7 @@ class MainViewModel
                     {
                         it.printStackTrace()
                         Timber.e("LOGIN FAILED ${it.message}")
+                        throwableExceptionLiveData.postValue(it)
                     }
                 )
         )
@@ -70,7 +80,8 @@ class MainViewModel
 
     fun loadAttendanceTimeInDetails() {
         addDisposable(
-            attendanceStateLocalLoader.byKey(AttendanceState.TO_CLOCK_IN)
+            internet.isConnected()
+                .andThen(attendanceStateLocalLoader.byKey(AttendanceState.TO_CLOCK_IN))
                 .flatMap {
                     if (it.toInt() != 0) { Single.just(it.toHoursAndMinuteFormat()) }
                     else { Single.error(Throwable("Clock int empty "))}
@@ -78,7 +89,9 @@ class MainViewModel
                 .compose(scheduler.forSingle())
                 .subscribe(
                     { timeInValue.postValue(it) },
-                    { Timber.e("${it.message}") }
+                    {
+                        Timber.e("${it.message}")
+                    }
                 )
         )
 
@@ -114,6 +127,7 @@ class MainViewModel
                         jobInfoLiveData.postValue(it)
                     },
                     {
+                        throwableExceptionLiveData.postValue(it)
                         it.printStackTrace()
                         Timber.e("FAILED TO LOAD JOB INFO ${it.message}")
                     }
