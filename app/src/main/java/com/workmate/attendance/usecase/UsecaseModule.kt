@@ -16,4 +16,9 @@ abstract class UsecaseModule {
     abstract fun bindLoginAuthenticator(
         loginAuthenticator: DefaultLoginAuthenticator
     ): LoginAuthenticator
+
+    @Binds
+    abstract fun bindInternet(
+        internet: DefaultInternet
+    ): Internet
 }
