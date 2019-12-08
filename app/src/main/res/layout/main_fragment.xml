@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".ui.screens.MainFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/job_info_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/screen_margin_large"
+        android:layout_marginLeft="@dimen/screen_margin_large"
+        android:layout_marginRight="@dimen/screen_margin_large"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/job_name"
+            style="@style/Text.Title"
+            android:textSize="@dimen/text_title_size"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/wage_value"
+            style="@style/Text.Title"
+            android:gravity="end"
+            android:textSize="@dimen/text_mini_title_size"
+            app:layout_constraintTop_toTopOf="@id/job_name"
+            app:layout_constraintBottom_toBottomOf="@id/job_name"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:id="@+id/company_name"
+            style="@style/Text.Title"
+            android:textSize="@dimen/text_mini_title_size"
+            app:layout_constraintTop_toBottomOf="@id/job_name"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <TextView
+            android:id="@+id/wage_type"
+            style="@style/Text.Title"
+            android:gravity="end"
+            android:textSize="@dimen/text_mini_title_2_size"
+            app:layout_constraintTop_toTopOf="@id/company_name"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <ImageView
+            android:id="@+id/location_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/screen_margin"
+            android:paddingRight="@dimen/screen_margin"
+            android:src="@drawable/ic_location"
+            app:layout_constraintTop_toBottomOf="@id/company_name"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <TextView
+            android:id="@+id/company_address"
+            style="@style/Text.Details"
+            app:layout_constraintTop_toTopOf="@id/location_icon"
+            app:layout_constraintLeft_toRightOf="@id/location_icon"/>
+
+        <LinearLayout
+            android:id="@+id/company_details_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/company_address">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/screen_margin"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/manager_position"
+                    style="@style/Text.Details"
+                    android:text="@string/manager"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_profile"
+                    android:drawablePadding="@dimen/screen_margin"/>
+
+                <TextView
+                    android:id="@+id/manager_name"
+                    style="@style/Text.Details"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/screen_margin"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/manager_contact_number"
+                    style="@style/Text.Details"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/contact_number"
+                    android:drawableLeft="@drawable/ic_contact"
+                    android:drawablePadding="@dimen/screen_margin"/>
+
+                <TextView
+                    android:id="@+id/contact_number_value"
+                    style="@style/Text.Details"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/screen_margin_large"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Text.Details"
+                    android:layout_width="0dp"
+                    android:text="@string/clock_in"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    style="@style/Text.Details"
+                    android:layout_width="0dp"
+                    android:text="@string/clock_out"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/clock_in_value"
+                    style="@style/Text.Title"
+                    android:layout_width="0dp"
+                    android:text="@string/time_empty"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/text_time_size"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/clock_out_value"
+                    style="@style/Text.Title"
+                    android:layout_width="0dp"
+                    android:text="@string/time_empty"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/text_time_size"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/attendance_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="@dimen/screen_margin_extra_large"
+        android:textColor="@color/brown_gray"
+        android:textStyle="bold"
+        android:background="@drawable/circle_background"
+        app:layout_constraintTop_toBottomOf="@id/job_info_container"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/no_network_text"
+        style="@style/Text.Details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_no_network"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/retry"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/no_network_text"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

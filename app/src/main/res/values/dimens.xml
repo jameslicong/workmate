@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="screen_margin_small">8dp</dimen>
+    <dimen name="screen_margin">16dp</dimen>
+    <dimen name="screen_margin_large">32dp</dimen>
+    <dimen name="screen_margin_extra_large">64dp</dimen>
+
+    <dimen name="text_title_size">20sp</dimen>
+    <dimen name="text_mini_title_size">18sp</dimen>
+    <dimen name="text_mini_title_2_size">16sp</dimen>
+    <dimen name="text_subtitle_size">12sp</dimen>
+    <dimen name="text_time_size">24sp</dimen>
+
+    <dimen name="progress_bar_height">20dp</dimen>
+</resources>
